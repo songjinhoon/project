@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>zModel3</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  <jsp-config>
+  	<jsp-property-group>
+  		<url-pattern>*.jsp</url-pattern>
+		<include-prelude>/common/head.jsp</include-prelude>
+		<include-coda>/common/footer.jsp</include-coda>
+  	</jsp-property-group>
+  </jsp-config>
+  
+
+  
+	<servlet>
+		<servlet-name>board</servlet-name>
+		<servlet-class>controller.BoardController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>board</servlet-name>
+		<url-pattern>/board/*</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>datachart</servlet-name>
+		<servlet-class>controller.DataChartController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>datachart</servlet-name>
+		<url-pattern>/datachart/*</url-pattern>  
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>graph</servlet-name>
+		<servlet-class>controller.GraphController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>graph</servlet-name>
+		<url-pattern>/graph/*</url-pattern>  
+	</servlet-mapping>
+
+	
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>controller.MemberController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>/member/*</url-pattern>  
+	</servlet-mapping>
+  
+  <servlet>
+		<servlet-name>movie</servlet-name>
+		<servlet-class>controller.MovieController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>movie</servlet-name>
+		<url-pattern>/movie/*</url-pattern>  
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>reservation</servlet-name>
+		<servlet-class>controller.ReservationController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>reservation</servlet-name>
+		<url-pattern>/reservation/*</url-pattern>  
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>controller.MainController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/main/*</url-pattern>  
+	</servlet-mapping>
+	
+  	
+</web-app>

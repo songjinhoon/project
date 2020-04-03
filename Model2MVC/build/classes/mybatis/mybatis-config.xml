@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="model.Member" alias="Member"/>
+		<typeAlias type="model.Board" alias="Board"/>
+		<typeAlias type="model.Movie" alias="Movie"/>
+		<typeAlias type="model.Movie_contents" alias="Movie_contents"/>
+		<typeAlias type="model.Review" alias="Review"/>
+		<typeAlias type="model.Schedule" alias="Schedule"/>
+		<typeAlias type="model.Chart" alias="Chart"/>
+		<typeAlias type="model.Booking" alias="Booking"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/teamprj?characterEncoding=UTF-8&amp;serverTimezone=UTC"/>
+				<property name="username" value="scott"/>
+				<property name="password" value="1111"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mybatis/BoardMapper.xml"/>
+ 		<mapper resource="mybatis/MemberMapper.xml"/>
+		<mapper resource="mybatis/ChartMapper.xml"/>
+		<mapper resource="mybatis/MovieMapper.xml"/>
+		<mapper resource="mybatis/ScheduleMapper.xml"/>
+<!--		<mapper resource="mybatis/BookingMapper.xml"/>
+		<mapper resource="mapper/ChartMapper.xml"/>
+		<mapper resource="mapper/BookingMapper.xml"/> -->
+	</mappers>
+</configuration>
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.ScheduleMapper">
+	<insert id="scheduleInsert" parameterType="Schedule">
+		INSERT INTO schedule (movie_num, loc_num, movie_date, movie_price)
+		VALUES (#{movie_num}, #{loc_num}, #{movie_date}, #{movie_price})
+	</insert>
+	
+	<select id="getSchedules" resultType="Schedule">
+		SELECT *
+		FROM schedule
+	</select>
+	
+	<select id="countSchedule" resultType="int">
+		SELECT count(*)
+		FROM (SELECT * FROM schedule GROUP BY movie_num) a
+	</select>
+	
+	<select id="getSchedule" parameterType="int" resultType="Schedule">
+		SELECT *
+		FROM schedule
+		WHERE movie_num = #{movie_num}
+		ORDER BY movie_date
+	</select>
+	
+	<select id="formSchedule" parameterType="int" resultType="Schedule">
+		SELECT *
+		FROM schedule
+		WHERE schedule_num = #{schedule_num}
+	</select>
+	
+	<select id="getMovieName" parameterType="int" resultType="String">
+		SELECT movie_name
+		FROM movie
+		WHERE movie_num = #{movie_num}
+	</select>
+	
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.MemberMapper">
+	<select id="getMemberNumber" resultType="int">
+		SELECT ifnull(max(mem_num)+1, 0) 
+		FROM member1
+	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO member1 
+		VALUES (#{mem_num}, #{mem_id}, #{mem_name}, #{mem_cell}, gender, #{mem_passwd})
+	</insert>
+	
+	<select id="getMemberPasswd" parameterType="String" resultType="String">
+		SELECT mem_passwd 
+		FROM member1 
+		WHERE mem_id = #{mem_id}
+	</select>
+	
+	<select id="getMember" resultType="Member" parameterType="String">
+		SELECT *
+		FROM member1
+		WHERE mem_id = #{mem_id}
+	</select>
+	
+	<update id="updateMember" parameterType="Member">
+		UPDATE member1
+		SET mem_name = #{mem_name}, mem_cell = #{mem_cell}, mem_passwd = #{mem_passwd}
+		WHERE mem_id = #{mem_id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		DELETE 
+		FROM member1
+		WHERE mem_id = #{mem_id}
+	</delete>
+	
+</mapper>

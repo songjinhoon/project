@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.MovieMapper">
+	<select id="getMovieNum" resultType="int">
+		SELECT ifnull(max(movie_num)+1, 0)
+		FROM movie	
+	</select>
+	
+	<insert id="insert" parameterType="Movie">
+		INSERT INTO movie
+		VALUES (#{movie_num}, #{movie_name}, #{movie_theme}, #{filename}, #{movie_url})
+	</insert>
+	
+	<select id="getMovies2" resultType="Movie">
+		SELECT *
+		FROM movie
+	</select>
+	
+	<select id="getMovieName" resultType="String" parameterType="int">
+		SELECT movie_name
+		FROM movie
+		WHERE movie_num = #{movie_num}
+	</select>
+	
+	<select id="getMovie" parameterType="int" resultType="Movie">
+		SELECT *
+		FROM movie
+		WHERE movie_num = #{movie_num}
+	</select>
+	
+	<select id="getNextMovies" resultType="Movie">
+		SELECT *
+		FROM movie
+		WHERE movie_num BETWEEN 4 AND 8
+	</select>
+	
+	<select id="getMovieList" parameterType="int" resultType="Movie_contents">
+		SELECT *
+		FROM movie_contents
+		WHERE movie_num = #{movie_num}
+	</select>
+	
+	<select id="getMaxMovieNum" resultType="int">
+		SELECT max(movie_num)+1
+		FROM movie_contents
+	</select>
+	
+	<insert id="insertMovieContents" parameterType="Movie_contents">
+		INSERT INTO movie_contents
+		VALUES (#{movie_num}, #{movie_subject}, #{movie_content}, #{movie_actor}, #{running_time}, #{url})
+	</insert>
+		
+	<insert id="insertReview" parameterType="Review">
+		INSERT INTO review
+		VALUES (#{movie_num}, #{mem_id}, now(), #{content})
+	</insert>
+	
+	<select id="getReview" resultType="Review" parameterType="int">
+		SELECT *
+		FROM review
+		WHERE movie_num = #{movie_num}
+		ORDER BY reg_date DESC
+	</select>
+	
+	<select id="getSchedules" resultType="Schedule">
+		SELECT *
+		FROM schedule;
+	</select>
+	
+	<select id="getScheduleMovieList" resultType="Schedule">
+		SELECT *
+		FROM schedule
+		GROUP BY movie_num;
+	</select>
+</mapper>
